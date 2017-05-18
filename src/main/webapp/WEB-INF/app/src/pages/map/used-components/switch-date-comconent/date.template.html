@@ -1,0 +1,15 @@
+<!--<span ng-click="$ctrl.toggleShow()">{{$ctrl.isShow?'Скрыть фильтр':'Показать фильтр'}}</span>-->
+<div class = "slider-background">
+    <rzslider   rz-slider-model="$ctrl.slider.minValue"
+               rz-slider-high="$ctrl.slider.maxValue"
+              rz-slider-options="$ctrl.slider.options" ></rzslider>
+    <div class="btn-group">
+        <button type = "button" class = "btn btn-primary" ng-click = "$ctrl.prevYear()">Предыдущий год</button>
+        <button type = "button" class = "btn btn-primary" ng-click = "$ctrl.currYear()">Текущий год</button>
+        <button type = "button" class = "btn btn-primary" ng-click = "$ctrl.nextYear()"  ng-disabled = "$ctrl.isCurrentDate">Следующий год</button>
+
+    </div>
+
+    <label class="dateStyle" for = "isUserCheck"> Показать только мои метки <input class = "checkIsUserMarker" id = "isUserCheck" type="checkbox" ng-model="$ctrl.isUser" ng-click = "$ctrl.selectUserMarkers()"></label>
+
+</div>

@@ -1,0 +1,45 @@
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="col-md-1 ">
+        </div>
+        <div class="col-md-10 col-md-1-offset">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" ng-click="$ctrl.mapShow()">Как? Когда? Куда?</a>
+            </div>
+
+            <!--<li class="dropdown">-->
+                <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>-->
+                <!--<ul id="login-dp" class="dropdown-menu">-->
+                        <!--<login-component></login-component>-->
+                <!--</ul>-->
+            <!--</li>-->
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-show="$ctrl.accessService._isAuthorized" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            Войти
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" style = "width: 168px;
+    border: 1px;
+    padding: 0;
+    height:279px;
+    background-color:rgba(255,255,255,0);">
+                              <li>
+                                  <login-component></login-component>
+                              </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

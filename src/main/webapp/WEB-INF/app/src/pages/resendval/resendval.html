@@ -1,0 +1,13 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2" style="background-color: rgba(255, 255, 255, 0.8); border-radius: 10px;" >
+            <h1>Ваша учётная не подтверждена. Нажмите на кнопку, чтобы заново отправить верификационный код</h1>
+            <div class="alert alert-danger" ng-show="$ctrl.textError">
+                <strong>Ошибка!</strong>{{$ctrl.textError}}
+            </div>
+            <button type="submit" id="newkeysenderbutton" class="btn btn-primary" ng-click="$ctrl.resend()">Отправить
+            </button>
+            <p></p>
+        </div>
+    </div>
+</div>
