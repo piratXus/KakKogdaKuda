@@ -1,5 +1,15 @@
 <div class = "filter">
-    <div>filter1</div>
+    <div class="body-filter">
+        <h3>Selectize theme</h3>
+        <p>Selected: </p>
+        <ui-select  style="width: 300px;" title="Выберете остановку">
+            <ui-select-match ng-model="$ctrl.element.selected" placeholder="Выберете пункт отправления">{{$select.selected.name}}</ui-select-match>
+            <ui-select-choices repeat="m in ctrl.mass | filter: $select.search">
+                <span ng-bind-html="m.name | highlight: $select.search"></span>
+                <small ng-bind-html="country.code | highlight: $select.search"></small>
+            </ui-select-choices>
+        </ui-select>
+    </div>
     <div>filter2</div>
     <div>filter3</div>
     <div>filter4</div>
