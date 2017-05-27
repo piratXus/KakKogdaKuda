@@ -1,16 +1,24 @@
 <div class = "filter">
-    <div class="body-filter">
-        <h3>Selectize theme</h3>
-        <p>Selected: </p>
-        <ui-select  style="width: 300px;" title="Выберете остановку">
-            <ui-select-match ng-model="$ctrl.element.selected" placeholder="Выберете пункт отправления">{{$select.selected.name}}</ui-select-match>
-            <ui-select-choices repeat="m in ctrl.mass | filter: $select.search">
-                <span ng-bind-html="m.name | highlight: $select.search"></span>
-                <small ng-bind-html="country.code | highlight: $select.search"></small>
-            </ui-select-choices>
-        </ui-select>
+    <div calss = "row">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Начальная:</h5>
+                <select style="max-width: 150px;" ng-model = "$ctrl.rootScope.startPoint" placeholder="Выберете остановку">
+                    <option ng-repeat="startPoint in $ctrl.stations" style="max-height: 200px; overflow: auto;">{{startPoint.nameStation}}</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <h5>Конечная:</h5>
+                <select style="max-width: 150px;"  ng-model = "$ctrl.rootScope.endPoint" placeholder="Выберете остановку">
+                    <option ng-repeat="endPoint in $ctrl.stations" style="max-height: 200px; overflow: auto;" ng-click="$ctrl.selectEndPoint(endPoint.nameStation)">{{endPoint.nameStation}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class = "row">
+            <div class="col-md-5">filter3</div>
+        </div>
+
+        <button class="btn-primary" ng-click="$ctrl.searchRoute()">Найти</button>
     </div>
-    <div>filter2</div>
-    <div>filter3</div>
-    <div>filter4</div>
 </div>

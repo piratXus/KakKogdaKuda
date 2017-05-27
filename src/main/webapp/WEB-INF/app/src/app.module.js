@@ -11,6 +11,7 @@ import registration from './pages/registration/registration.module';
 import accessService from './services/access.service';
 import navarComponent from './pages/navbar/navbar.component';
 import filterComponent from './pages/filters/filters.component';
+
 import routerConfig from './routerConfig';
 import myInterceptor from './myInterceptor';
 
