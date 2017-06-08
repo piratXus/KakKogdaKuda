@@ -13,6 +13,11 @@ class FilterController {
         this.rootScope.endPoint = "";
         this.rootScope.startPoint = "";
         this.routeService = routeService;
+        this.routesList = undefined;
+        this.routeSelect = null;
+        this.busesList = "";
+        this.numberTranfer = 0;
+        this.timeRoute = "15 min";
         console.log("filter");
         this.stations = [];
         this.routeService.getAllStation().then((resp)=>{
@@ -34,30 +39,37 @@ class FilterController {
 
     getRoutByPoints(places,startPoint,endPoint,routService,searchPlace,directionsService,directionsDisplay) {
         return new Promise((resolve, reject) => {
-            routService.getRoteByStation(startPoint,endPoint).then((points) => {
-                console.dir(points);
+            routService.getRoteByStation(startPoint,endPoint).then((routes) => {
+                this.routesList=routes;
+                console.log("get route");
+                console.dir(routes);
                 var wayPoints = [];
                 let str;
                 let flag = false;
                 let firstStation;
-                points.routs.forEach((station)=>{
-                    var requestPlace = {
-                        query: 'Брест '+station.nameStation,
-                        type: ['bus_station'],
-                    };
-                    str = station.nameStation;
-                    if(points.routs[0] === station){
-                        firstStation = str;
-                    }
-                    searchPlace(requestPlace,str,places,firstStation).then((resp)=>{
-                        console.dir("after rhen");
-                        wayPoints.push(resp.waypoint);
-                        console.dir(wayPoints);
-                        flag = true;
+                routes.forEach((route)=>{
+                    route.buses.forEach((bus)=>{
+                        this.busesList += bus.numberBus;
+                    });
+                    route.stationForBuses.forEach((station)=>{
+                        console.log("station");
+                        console.dir(station);
+                        var requestPlace = {
+                            query: 'Брест '+station.nameStation,
+                            type: ['bus_station'],
+                        };
+                        str = station.nameStation;
+                        if(route.stationForBuses[0] === station){
+                            firstStation = str;
+                        }
+                        searchPlace(requestPlace,str,places,firstStation).then((resp)=>{
+                            console.dir("after rhen");
+                            wayPoints.push(resp.waypoint);
+                            console.dir(wayPoints);
+                            flag = true;
+                        });
                     });
                 });
-
-
 
                 setTimeout(()=>{
                     console.dir();
@@ -73,6 +85,11 @@ class FilterController {
                 },2000);
             });
         });
+    }
+
+    selctRoute(route){
+        console.dir("select");
+        this.routeSelect = route;
     }
 
     searchPlace(request,nameStation,places,firstStation){
@@ -139,7 +156,7 @@ class FilterController {
             for(let i = 1;i<route.length-1;i++){
                 wayPoints.push({
                     location:new google.maps.LatLng(route[i].geometry.location.lat(),route[i].geometry.location.lng()),
-                    stopover: false,
+                    stopover: true,
                 });
             }
         }

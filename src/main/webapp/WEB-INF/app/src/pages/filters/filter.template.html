@@ -1,13 +1,13 @@
 <div class = "filter">
     <div calss = "row">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-xs-12">
                 <h5>Начальная:</h5>
                 <select style="max-width: 150px;" ng-model = "$ctrl.rootScope.startPoint" placeholder="Выберете остановку">
                     <option ng-repeat="startPoint in $ctrl.stations" style="max-height: 200px; overflow: auto;">{{startPoint.nameStation}}</option>
                 </select>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-xs-12">
                 <h5>Конечная:</h5>
                 <select style="max-width: 150px;"  ng-model = "$ctrl.rootScope.endPoint" placeholder="Выберете остановку">
                     <option ng-repeat="endPoint in $ctrl.stations" style="max-height: 200px; overflow: auto;" ng-click="$ctrl.selectEndPoint(endPoint.nameStation)">{{endPoint.nameStation}}</option>
@@ -15,10 +15,51 @@
             </div>
         </div>
 
+         <div class = "row">
+             <div class="col-md-6 col-xs-12">
+                <h5>Время отправления:</h5>
+                <input name="fromTime" type="time">
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <h5>Желаемое время прибытия:</h5>
+                <input name=toTime" type="time">
+            </div>
+        </div>
+
         <div class = "row">
-            <div class="col-md-5">filter3</div>
+            <div class="col-md-12 col-xs-12">
+                <h5>Дата:</h5>
+                <input name="date" type="date">
+            </div>
+        </div>
+        <div class = "row">
+            <h5></h5>
         </div>
 
         <button class="btn-primary" ng-click="$ctrl.searchRoute()">Найти</button>
+    </div>
+</div>
+
+<div class = "filter">
+    <div calss = "row">
+        <table class="table" ng-if="$ctrl.routesList">
+            <thead class="thread-inverse">
+                <tr style = "background-color: white">
+                    <th>Направление</th>
+                    <th>Автобусы</th>
+                    <th>Количество пересадок</th>
+                    <th>Время</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="route in $ctrl.routesList">
+                    <td ng-click="$ctrl.routeSelect(route)">{{route.name}}</td>
+                    <td>{{$ctrl.busesList}}</td>
+                    <td>{{$ctrl.numberTranfer}}</td>
+                    <td>{{$ctrl.timeRoute}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

@@ -19,10 +19,13 @@ export default class RouteService{
     }
 
     getRoteByStation(startPoint,endPoint){
-        const url = "http://localhost:8080/api/main/station/"+startPoint+"/"+endPoint;
+
+        const url = "http://localhost:8080/api/main/route/"+startPoint+"/"+endPoint;
 
         return this.http.get(url,{
         }).then((resp) => {
+            console.log ("respons");
+            console.dir(resp);
             return resp.data;
         }).catch((castError) => {
             console.dir(castError);

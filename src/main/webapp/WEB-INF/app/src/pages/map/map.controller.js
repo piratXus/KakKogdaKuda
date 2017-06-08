@@ -30,6 +30,7 @@ class MapController {
                 rootScope.directionsDisplay.setMap(ourMap);
                 rootScope.directionsDisplay.setOptions({suppressMarkers: true, suppressInfoWindows: true});
 
+
                 rootScope.places = new google.maps.places.PlacesService(ourMap);
                 if (ourMap) {
                     resolve({
@@ -52,22 +53,10 @@ class MapController {
             let requestPlace = {};
             let pos = {};
             if (navigator.geolocation) {
-                pos = {
-                    lat: 52.1002527,
-                    lng: 23.7540576
-                };
-                ourMap.setCenter(pos);
-                ourMap.zoom = 17;
-                requestPlace = {
-                    location: pos,
-                    radius: 550,
-                    type: ['bus_station'],
-                };
-                resolve({place: requestPlace});
-                /*navigator.geolocation.getCurrentPosition(function(position) {
+                navigator.geolocation.getCurrentPosition(function(position) {
                  pos = {
-                 lat: '52.1002527',
-                 lng: '23.7540576'
+                 lat: position.coords.latitude,
+                 lng: position.coords.longitude
                  };
                  console.log("current position");
                  console.dir(pos);
@@ -81,7 +70,7 @@ class MapController {
                  console.log("places");
                  console.dir(requestPlace);
                  resolve({place: requestPlace});
-                 });*/
+                 });
             } else {
                 reject('Error geolocation');
             }

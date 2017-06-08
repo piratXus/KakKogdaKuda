@@ -6,38 +6,49 @@ import java.util.List;
  * Created by piratXus on 27.05.2017.
  */
 public class Route {
-    private List<StationForBus> stationForBuses;
-    private Bus bus;
+    private String name;
+    private List<Station> stationForBuses;
+    private List<Bus> buses;
 
     public Route() {
     }
 
-    public Route(List<StationForBus> stationForBuses, Bus bus) {
+    public Route(String name, List<Station> stationForBuses, List<Bus> buses) {
+        this.name = name;
         this.stationForBuses = stationForBuses;
-        this.bus = bus;
+        this.buses = buses;
     }
 
-    public List<StationForBus> getStationForBuses() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Station> getStationForBuses() {
         return stationForBuses;
     }
 
-    public void setStationForBuses(List<StationForBus> stationForBuses) {
+    public void setStationForBuses(List<Station> stationForBuses) {
         this.stationForBuses = stationForBuses;
     }
 
-    public Bus getBus() {
-        return bus;
+    public List<Bus> getBuses() {
+        return buses;
     }
 
-    public void setBus(Bus bus) {
-        this.bus = bus;
+    public void setBuses(List<Bus> buses) {
+        this.buses = buses;
     }
 
     @Override
     public String toString() {
         return "Route{" +
-                "stationForBuses=" + stationForBuses +
-                ", bus=" + bus +
+                "name='" + name + '\'' +
+                ", stationForBuses=" + stationForBuses +
+                ", buses=" + buses +
                 '}';
     }
 }

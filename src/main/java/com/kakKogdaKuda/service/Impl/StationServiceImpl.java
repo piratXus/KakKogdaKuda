@@ -14,6 +14,9 @@ import java.util.List;
 @Service("stationService")
 public class StationServiceImpl implements StationServiceInterface {
 
+//    @Autowired
+//    private StationMapper stationMapper;
+
     List<Station> stations = new ArrayList<>();
 
     @Override
@@ -21,7 +24,15 @@ public class StationServiceImpl implements StationServiceInterface {
         List<Station> allStation = new ArrayList<>();
         List<Bus> buses = new ArrayList<>();
         allStation.add(new Station(1L,"Технический университет"));
+        allStation.add(new Station(9L,"Богданчука"));
+        allStation.add(new Station(10L,"Завод"));
+        allStation.add(new Station(11L,"Центр молодежного творчества"));
+        allStation.add(new Station(12L,"Зеленая"));
+        allStation.add(new Station(13L,"МОПРа"));
         allStation.add(new Station(2L,"Проспект Машерова"));
+        allStation.add(new Station(14L,"ЦУМ"));
+        allStation.add(new Station(15L,"Гимназия №1"));
+        allStation.add(new Station(16L,"Промсиройбанк"));
         allStation.add(new Station(3L,"Орджоникидзе"));
         return allStation;
     }
